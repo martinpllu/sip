@@ -1,0 +1,33 @@
+{
+    "name": "sip",
+    "version": "0.0.0",
+    "private": true,
+    "type": "module",
+    "scripts": {
+        "dev": "sst dev",
+        "build": "sst build",
+        "build-client": "esbuild src/client/ionic.ts --bundle --minify --outfile=assets/ionic.js",
+        "deploy": "sst deploy",
+        "remove": "sst remove",
+        "console": "sst console",
+        "typecheck": "tsc --noEmit",
+        "postinstall": "rm -rf ./node_modules/@types/react"
+    },
+    "dependencies": {
+        "dayjs": "^1.11.10",
+        "echarts": "^5.4.3",
+        "hono": "^3.10.2",
+        "sqlstring": "^2.3.3"
+    },
+    "devDependencies": {
+        "@tsconfig/node18": "^18.2.2",
+        "aws-cdk-lib": "2.101.1",
+        "constructs": "10.2.69",
+        "sst": "2.31.0",
+        "ts-node": "^10.9.1",
+        "typescript": "^5.2.2"
+    },
+    "workspaces": [
+        "packages/*"
+    ]
+}
