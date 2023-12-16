@@ -3,20 +3,16 @@ import { AppWrapper, Button, ThemeProvider } from "@wealthwizards/design-system"
 import React from "react";
 import ReactDOMServer from "react-dom/server";
 
-const TENANT = "gilbert";
-// const TENANT = "ruby";
+const TENANT = "turo";
 
-const MyComponent = () => {
-    return (
-        <ThemeProvider tenant={TENANT}>
-            <AppWrapper>
-                <h1>Hello world</h1>
-                <Button>Hi</Button>
-            </AppWrapper>
-        </ThemeProvider>
-    );
-};
+const MyComponent = () => (
+    <ThemeProvider tenant={TENANT}>
+        <AppWrapper>
+            <h1>Hello world</h1>
+            <Button>Hi</Button>
+            <input type="text"></input>
+        </AppWrapper>
+    </ThemeProvider>
+);
 
-const renderedString = ReactDOMServer.renderToString(<MyComponent />);
-
-export default new Hono().get("/", (c) => c.html(renderedString));
+export default new Hono().get("/", (c) => c.html(ReactDOMServer.renderToString(<MyComponent />)));
