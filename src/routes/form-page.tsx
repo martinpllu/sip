@@ -23,4 +23,4 @@ const form = (
     </Form>
 );
 
-export default new Hono().get("/", (c) => c.html(wrap(form)));
+export default new Hono().get("/", wrap(form));
