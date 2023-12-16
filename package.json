@@ -14,8 +14,10 @@
     },
     "dependencies": {
         "@emotion/react": "^11.11.1",
+        "@neondatabase/serverless": "^0.6.0",
         "@wealthwizards/design-system": "^25.25.2",
         "dayjs": "^1.11.10",
+        "drizzle-orm": "^0.29.1",
         "echarts": "^5.4.3",
         "hono": "^3.10.2",
         "react-dom": "^18.2.0",
@@ -26,6 +28,7 @@
         "@types/react-dom": "^18.2.18",
         "aws-cdk-lib": "2.101.1",
         "constructs": "10.2.69",
+        "drizzle-kit": "^0.20.6",
         "sst": "2.31.0",
         "ts-node": "^10.9.1",
         "typescript": "^5.2.2"
