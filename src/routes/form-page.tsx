@@ -5,7 +5,7 @@ import { wrap } from "../util/react-util";
 
 const form = (
     <Form action="/foo/bar">
-        <Heading size="l" type="h1">
+        <Heading size="s" type="h3">
             Personal Details
         </Heading>
         <Input>
