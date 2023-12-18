@@ -7,7 +7,7 @@ import dbPage from "./routes/db-page";
 // initCharts();
 const app = new Hono();
 
-// app.route("/", formPage);
-app.route("/", dbPage);
+app.route("/", formPage);
+app.route("/db", dbPage);
 
 export const handler = handle(app);
