@@ -3,7 +3,7 @@ import { drizzle } from "drizzle-orm/neon-serverless";
 import { migrate } from "drizzle-orm/neon-serverless/migrator";
 import ws from "ws";
 neonConfig.webSocketConstructor = ws;
-const pool = new Pool({ connectionString: process.env.DRIZZLE_DATABASE_URL });
+const pool = new Pool({ connectionString: process.env.DB_CONNECTION_STRING });
 const client = await pool.connect();
 export const db = drizzle(client);
 try {
