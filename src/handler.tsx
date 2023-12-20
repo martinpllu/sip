@@ -1,6 +1,6 @@
 import { Hono } from "hono";
 import { handle } from "hono/aws-lambda";
-import formPage from "./routes/form-page";
+import yourDetailsPage from "./routes/your-details-page";
 import homePage from "./routes/home-page";
 import dbPage from "./routes/db-page";
 // import { initCharts } from "./util/echarts";
@@ -9,7 +9,7 @@ import dbPage from "./routes/db-page";
 const app = new Hono();
 
 app.route("/", homePage);
-app.route("/form", formPage);
+app.route("/your-details", yourDetailsPage);
 app.route("/db", dbPage);
 
 export const handler = handle(app);

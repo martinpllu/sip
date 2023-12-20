@@ -1,6 +1,6 @@
-import { Button, Form, Heading, Input } from "@wealthwizards/design-system";
-import { Hono } from "hono";
 import React from "react";
+import { Button, Heading } from "@wealthwizards/design-system";
+import { Hono } from "hono";
 import { wrap } from "../util/react-util";
 
 const page = (
@@ -12,17 +12,29 @@ const page = (
             <link href="https://fonts.googleapis.com/css?family=Roboto:400,700&display=swap" rel="stylesheet" />
         </head>
         <body>
-            <h1>Your financial wellbeing</h1>
-            <Button hx-get="/form" hx-swap="outerHTML">
-                Get started
-            </Button>
-            {/* <div
-                className="spinner"
-                style={{ width: "400px", height: "300px" }}
-                hx-get="/my-chart"
-                hx-trigger="load"
-                hx-swap="outerHTML"
-            ></div> */}
+            <div
+                id="heading"
+                style={{
+                    backgroundColor: "black",
+                    display: "flex",
+                    padding: "2rem",
+                    gap: "1rem",
+                    alignItems: "center",
+                }}
+            >
+                <img
+                    width="50px"
+                    height="50px"
+                    src="https://cdn.wealthwizards.io/static/turo/W_Mark_White250x277.png"
+                    alt="Wealth Wizards Logo"
+                />
+                <h1 style={{ color: "white" }}>Financial Wellbeing</h1>
+            </div>
+            <div id="container">
+                <Button hx-get="/your-details" hx-swap="outerHTML" hx-target="#container">
+                    Get started
+                </Button>
+            </div>
         </body>
     </html>
 );
