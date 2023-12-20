@@ -15,6 +15,13 @@
       "when": 1702760983488,
       "tag": "0001_fantastic_lorna_dane",
       "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "5",
+      "when": 1703099617593,
+      "tag": "0002_many_silver_samurai",
+      "breakpoints": true
     }
   ]
 }

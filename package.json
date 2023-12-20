@@ -10,7 +10,9 @@
         "deploy": "sst deploy",
         "remove": "sst remove",
         "console": "sst console",
-        "typecheck": "tsc --noEmit"
+        "typecheck": "tsc --noEmit",
+        "generate-migrations": "drizzle-kit generate:pg",
+        "run-migrations": "tsx src/db/run-migrations.ts"
     },
     "dependencies": {
         "@emotion/react": "^11.11.1",
@@ -31,6 +33,7 @@
         "drizzle-kit": "^0.20.6",
         "sst": "2.31.0",
         "ts-node": "^10.9.1",
+        "tsx": "^4.7.0",
         "typescript": "^5.2.2"
     },
     "workspaces": [

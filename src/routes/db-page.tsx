@@ -5,7 +5,6 @@ import { users } from "../db/schema";
 console.time("insert");
 await db.insert(users).values({
     fullName: "Blee",
-    fullName2: "Blee2",
     phone: "1234",
 });
 
