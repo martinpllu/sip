@@ -1,15 +1,13 @@
 import { Hono } from "hono";
 import { handle } from "hono/aws-lambda";
-import yourDetailsPage from "./routes/your-details-page";
-import homePage from "./routes/home-page";
-import dbPage from "./routes/db-page";
-// import { initCharts } from "./util/echarts";
+import yourDetails from "./routes/your-details";
+import home from "./routes/home";
+import dbPage from "./routes/db";
 
-// initCharts();
 const app = new Hono();
 
-app.route("/", homePage);
-app.route("/your-details", yourDetailsPage);
-app.route("/db", dbPage);
+app.route("/", home);
+app.route("/your-details", yourDetails);
+// app.route("/db", dbPage);
 
 export const handler = handle(app);

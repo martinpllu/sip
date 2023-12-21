@@ -7,7 +7,7 @@ const page = (
     <html>
         <head>
             <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-            <title>My app</title>
+            <title>Financial Wellbeing</title>
             <script src="https://unpkg.com/htmx.org@1.9.6"></script>
             <link href="https://fonts.googleapis.com/css?family=Roboto:400,700&display=swap" rel="stylesheet" />
         </head>
@@ -28,7 +28,7 @@ const page = (
                     src="https://cdn.wealthwizards.io/static/turo/W_Mark_White250x277.png"
                     alt="Wealth Wizards Logo"
                 />
-                <h1 style={{ color: "white" }}>Financial Wellbeing</h1>
+                <h1 style={{ color: "white" }}>Financial Wellbeing...</h1>
             </div>
             <div id="container">
                 <Button hx-get="/your-details" hx-swap="outerHTML" hx-target="#container">

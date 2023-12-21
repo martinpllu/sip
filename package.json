@@ -4,7 +4,7 @@
     "private": true,
     "type": "module",
     "scripts": {
-        "dev-local": "tsx src/local.ts",
+        "dev-local": "tsx watch src/local.ts",
         "dev": "sst dev",
         "build": "sst build",
         "deploy": "sst deploy",
@@ -32,6 +32,7 @@
         "aws-cdk-lib": "2.101.1",
         "constructs": "10.2.69",
         "drizzle-kit": "^0.20.6",
+        "nodemon": "^3.0.2",
         "sst": "2.31.0",
         "ts-node": "^10.9.1",
         "tsx": "^4.7.0",
