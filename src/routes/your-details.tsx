@@ -1,8 +1,6 @@
 import { Button, Form, Heading, Input } from "@wealthwizards/design-system";
 import { Hono } from "hono";
 import React from "react";
-import { db } from "../db/db";
-import { users } from "../db/schema";
 import ReactDOMServer from "react-dom/server";
 import AppPage from "./app-page";
 

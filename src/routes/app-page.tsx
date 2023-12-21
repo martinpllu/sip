@@ -15,7 +15,28 @@ const AppPage: React.FC<PageProps> = ({ children }) => {
             </head>
             <body>
                 <ThemeProvider tenant="turo">
-                    <AppWrapper>{children}</AppWrapper>
+                    <AppWrapper>
+                        <div
+                            id="heading"
+                            style={{
+                                backgroundColor: "black",
+                                display: "flex",
+                                padding: "2rem",
+                                gap: "1rem",
+                                alignItems: "center",
+                                marginBottom: "1rem",
+                            }}
+                        >
+                            <img
+                                width="50px"
+                                height="50px"
+                                src="https://cdn.wealthwizards.io/static/turo/W_Mark_White250x277.png"
+                                alt="Wealth Wizards Logo"
+                            />
+                            <h1 style={{ color: "white" }}>Financial Wellbeing</h1>
+                        </div>
+                        {children}
+                    </AppWrapper>
                 </ThemeProvider>
             </body>
         </html>
