@@ -9,18 +9,19 @@ import AppPage from "./app-page";
 const app = new Hono();
 export default app;
 
-app.get("/", (c) =>
-    c.html(
+app.get("/", (c) => {
+    const errors = c.req.query("errors")?.split(",") || [];
+    return c.html(
         ReactDOMServer.renderToString(
             <AppPage>
                 <Heading size="s" type="h3">
                     Personal Details
                 </Heading>
-                <Form hx-post="form">
+                <Form action="/your-details" method="post">
                     <Input>
                         <Input.Label>What is your name?</Input.Label>
                         <Input.TextInput size="s" placeholder="Your name" name="name" />
-                        <Input.HelperLabel>Optional helper copy.</Input.HelperLabel>
+                        {errors.includes("name") && <Input.HelperLabel>Please enter a name</Input.HelperLabel>}
                     </Input>
                     <Input>
                         <Input.Label>How old are you?</Input.Label>
@@ -32,15 +33,18 @@ app.get("/", (c) =>
                 </Form>
             </AppPage>
         )
-    )
-);
+    );
+});
 
 app.post("/", async (c) => {
     const body = await c.req.parseBody();
-    await db.insert(users).values({
-        fullName: body.name,
-        phone: body.age,
-    });
-    console.log("Inserted", body);
-    return c.html("");
+    if (!body.name) {
+        return c.redirect("your-details?errors=name");
+    }
+    // await db.insert(users).values({
+    //     fullName: body.name,
+    //     phone: body.age,
+    // });
+    // console.log("Inserted", body);
+    // return c.html("");
 });
