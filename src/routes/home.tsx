@@ -8,25 +8,18 @@ export default new Hono().get("/", (c) =>
     c.html(
         ReactDOMServer.renderToString(
             <AppPage>
-                {/* <HeroBox>
-                    <h1>Hello</h1>
-                </HeroBox>
-                <a href="your-details">
-                    <Button>Get started!</Button>
-                </a> */}
-
                 <HeroBox>
                     <HeroBox.Main>
                         <Heading type="h1" size="xl" color={"primaryBrand"}>
                             Find out your retirement income in 5 minutes
                         </Heading>
                         <Text size={"xl"} color={"primaryBrand"}>
-                            Blah
+                            Answer a few easy questions and find out your retirement income options
                         </Text>
                         <Form>
                             <Form.InputSet>
                                 <Input>
-                                    <Input.Label>Start by telling us your age</Input.Label>
+                                    <Input.Label>Start by telling us your age&nbsp;</Input.Label>
                                     <Input.Select>
                                         {[45, 50, 60].map((i) => (
                                             <option value={i} key={"age-" + i}>
@@ -46,9 +39,9 @@ export default new Hono().get("/", (c) =>
                     </HeroBox.Main>
                     <HeroBox.Aside>
                         <TaggedIllustration illustration="PiggyBank">
-                            <TaggedIllustration.Tag $offset={5}>When can I retire?</TaggedIllustration.Tag>
-                            <TaggedIllustration.Tag $offset={45}>Should I work part-time?</TaggedIllustration.Tag>
-                            <TaggedIllustration.Tag>Holiday or a new car?</TaggedIllustration.Tag>
+                            <TaggedIllustration.Tag $offset={5}>"When can I retire?"</TaggedIllustration.Tag>
+                            <TaggedIllustration.Tag $offset={45}>"Should I work part-time?"</TaggedIllustration.Tag>
+                            <TaggedIllustration.Tag>"Holiday or a new car?"</TaggedIllustration.Tag>
                         </TaggedIllustration>
                     </HeroBox.Aside>
                 </HeroBox>
