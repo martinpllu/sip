@@ -16,7 +16,7 @@ app.get("/", async (c) => {
                 <HeroBox>
                     <HeroBox.Main>
                         <Heading type="h1" size="xl" color={"primaryBrand"} css={headingCss}>
-                            Find out your retirement income in 5 minutes!!!!
+                            Find out your retirement income in 5 minutes
                         </Heading>
                         <Text size={"xl"} color={"primaryBrand"}>
                             Answer a few easy questions and find out your retirement income options

@@ -8,7 +8,6 @@ const app = new Hono();
 export default app;
 
 app.get("/", (c) => {
-    const errors = c.req.query("errors")?.split(",") || [];
     return c.html(
         renderToString(
             <AppPage>
@@ -39,14 +38,5 @@ app.get("/", (c) => {
 });
 
 app.post("/", async (c) => {
-    const body = await c.req.parseBody();
-    if (!body.name) {
-        return c.redirect("your-details?errors=name");
-    }
-    // await db.insert(users).values({
-    //     fullName: body.name,
-    //     phone: body.age,
-    // });
-    // console.log("Inserted", body);
-    // return c.html("");
+    // ...
 });
