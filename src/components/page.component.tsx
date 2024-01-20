@@ -1,11 +1,10 @@
-import { AppWrapper, ThemeProvider } from "@wealthwizards/design-system";
 import React from "react";
 
 type PageProps = {
     children?: React.ReactNode;
 };
 
-const AppPage: React.FC<PageProps> = ({ children }) => {
+const Page: React.FC<PageProps> = ({ children }) => {
     return (
         <html>
             <head>
@@ -24,12 +23,10 @@ const AppPage: React.FC<PageProps> = ({ children }) => {
                 ></link>
             </head>
             <body>
-                <ThemeProvider tenant="turo">
-                    <AppWrapper>{children}</AppWrapper>
-                </ThemeProvider>
+                <div id="main">{children}</div>
             </body>
         </html>
     );
 };
 
-export default AppPage;
+export default Page;
