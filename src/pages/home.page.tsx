@@ -42,7 +42,6 @@ app.get("/", async (c) => {
                                 </Input>
                             </Form.InputSet>
                         </Form>
-                        {/* <AgeInputForm onSubmit={(data) => onNext(data)} age={formData.age} /> */}
                     </HeroBox.Main>
                     <HeroBox.Aside>
                         <TaggedIllustration illustration="PiggyBank">
@@ -64,12 +63,7 @@ app.post("/", async (c) => {
     } else {
         return c.redirect("your-details");
     }
-    // await db.insert(users).values({
-    //     fullName: body.name,
-    //     phone: body.age,
-    // });
-    // console.log("Inserted", body);
-    // return c.html("");
+    // save to database here...
 });
 
 const headingCss: Interpolation<Theme> = ({ spacing }) => css`

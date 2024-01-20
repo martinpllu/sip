@@ -4,7 +4,7 @@
     "private": true,
     "type": "module",
     "scripts": {
-        "dev": "tsx watch src/local.ts",
+        "dev": "tsx watch src/util/local-server.ts",
         "dev-sst": "sst dev",
         "build": "sst build",
         "deploy": "sst deploy",
