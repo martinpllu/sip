@@ -4,26 +4,22 @@
     "private": true,
     "type": "module",
     "scripts": {
-        "dev-local": "tsx watch src/local.ts",
-        "dev": "sst dev",
+        "dev": "tsx watch src/local.ts",
+        "dev-sst": "sst dev",
         "build": "sst build",
         "deploy": "sst deploy",
         "remove": "sst remove",
         "console": "sst console",
-        "typecheck": "tsc --noEmit",
-        "generate-migrations": "drizzle-kit generate:pg",
-        "run-migrations": "tsx src/db/run-migrations.ts"
+        "typecheck": "tsc --noEmit"
     },
     "dependencies": {
         "@emotion/react": "^11.11.1",
-        "@neondatabase/serverless": "^0.6.0",
         "@wealthwizards/design-system": "^25.25.2",
         "dayjs": "^1.11.10",
         "drizzle-orm": "^0.29.1",
         "echarts": "^5.4.3",
         "hono": "^3.10.2",
-        "react-dom": "^18.2.0",
-        "sqlstring": "^2.3.3"
+        "react-dom": "^18.2.0"
     },
     "devDependencies": {
         "@hono/node-server": "^1.3.3",

@@ -2,7 +2,7 @@ import { Chip, ChipGroup, Form, Heading } from "@wealthwizards/design-system";
 import { Hono } from "hono";
 import React from "react";
 import { renderToString } from "../util/render";
-import AppPage from "./app-page";
+import AppPage from "./app.page";
 
 const app = new Hono();
 export default app;

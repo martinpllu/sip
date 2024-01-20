@@ -7,7 +7,7 @@ export function renderToString(Component: React.ReactElement): Promise<string> {
         let htmlContent = "";
 
         const mockStream = new Writable({
-            write(chunk: any, encoding: BufferEncoding, callback: (error?: Error | null) => void) {
+            write(chunk: any, _: BufferEncoding, callback: (error?: Error | null) => void) {
                 htmlContent += chunk.toString();
                 callback();
             },
@@ -17,7 +17,7 @@ export function renderToString(Component: React.ReactElement): Promise<string> {
             },
         });
 
-        const { pipe, abort } = renderToPipeableStream(Component, {
+        const { pipe } = renderToPipeableStream(Component, {
             onShellReady() {
                 pipe(mockStream);
             },
