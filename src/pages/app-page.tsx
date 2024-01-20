@@ -10,7 +10,7 @@ const AppPage: React.FC<PageProps> = ({ children }) => {
         <html>
             <head>
                 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-                <title>Financial Wellbeing</title>
+                <title>Your Retirement</title>
                 <script src="https://unpkg.com/htmx.org@1.9.6"></script>
                 <style>
                     {`style {

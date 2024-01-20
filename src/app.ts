@@ -1,6 +1,6 @@
 import { Hono } from "hono";
-import yourDetailsPage from "./routes/your-details";
-import homePage from "./routes/home";
+import yourDetailsPage from "./pages/your-details";
+import homePage from "./pages/home";
 
 export const app = new Hono();
 
