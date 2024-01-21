@@ -12,6 +12,7 @@ const Page: React.FC<PageProps> = ({ children }) => {
                 <title>Your Retirement</title>
                 <script src="https://unpkg.com/htmx.org@1.9.6"></script>
                 <style>
+                    {/* without this some of the emotion style tags get displayed! */}
                     {`style {
                         display: none !important;
                     }`}

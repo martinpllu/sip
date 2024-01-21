@@ -31,46 +31,44 @@ function page(state: State) {
         <ThemeProvider tenant="turo">
             <Page>
                 <AppWrapper>
-                    <Page>
-                        <HeroBox>
-                            <HeroBox.Main>
-                                <Heading type="h1" size="xl" color={"primaryBrand"} css={headingCss}>
-                                    Find out your retirement income in 5 minutes
-                                </Heading>
-                                <Text size={"xl"} color={"primaryBrand"}>
-                                    Answer a few easy questions and find out your retirement income options
-                                </Text>
-                                <Form action="/" method="post" hx-post="/" hx-target="#main" hx-swap="innerHTML" hx-push-url="true">
-                                    <Form.InputSet>
-                                        <div style={{ display: "flex" }}>
-                                            <Input>
-                                                <Input.Label>Start by telling us your age&nbsp;</Input.Label>
-                                                <Input.Select name="age">
-                                                    {range(40, 80).map((i) => (
-                                                        <option value={i} key={"age-" + i}>
-                                                            {i}
-                                                        </option>
-                                                    ))}
-                                                </Input.Select>
-                                                {state.missingAgeError && <Input.Error>Please select your age</Input.Error>}
-                                            </Input>
-                                        </div>
+                    <HeroBox>
+                        <HeroBox.Main>
+                            <Heading type="h1" size="xl" color={"primaryBrand"} css={headingCss}>
+                                Find out your retirement income in 5 minutes
+                            </Heading>
+                            <Text size={"xl"} color={"primaryBrand"}>
+                                Answer a few easy questions and find out your retirement income options
+                            </Text>
+                            <Form action="/" method="post" hx-post="/" hx-target="#main" hx-swap="innerHTML" hx-push-url="true">
+                                <Form.InputSet>
+                                    <div style={{ display: "flex" }}>
                                         <Input>
-                                            <Input.LabelSpacer />
-                                            <Button type={"submit"}>Next</Button>
+                                            <Input.Label>Start by telling us your age&nbsp;</Input.Label>
+                                            <Input.Select name="age">
+                                                {range(40, 80).map((i) => (
+                                                    <option value={i} key={"age-" + i}>
+                                                        {i}
+                                                    </option>
+                                                ))}
+                                            </Input.Select>
+                                            {state.missingAgeError && <Input.Error>Please select your age</Input.Error>}
                                         </Input>
-                                    </Form.InputSet>
-                                </Form>
-                            </HeroBox.Main>
-                            <HeroBox.Aside>
-                                <TaggedIllustration illustration="PiggyBank">
-                                    <TaggedIllustration.Tag $offset={5}>"When can I retire?"</TaggedIllustration.Tag>
-                                    <TaggedIllustration.Tag $offset={45}>"Should I work part-time?"</TaggedIllustration.Tag>
-                                    <TaggedIllustration.Tag>"Holiday or a new car?"</TaggedIllustration.Tag>
-                                </TaggedIllustration>
-                            </HeroBox.Aside>
-                        </HeroBox>
-                    </Page>
+                                    </div>
+                                    <Input>
+                                        <Input.LabelSpacer />
+                                        <Button type={"submit"}>Next</Button>
+                                    </Input>
+                                </Form.InputSet>
+                            </Form>
+                        </HeroBox.Main>
+                        <HeroBox.Aside>
+                            <TaggedIllustration illustration="PiggyBank">
+                                <TaggedIllustration.Tag $offset={5}>"When can I retire?"</TaggedIllustration.Tag>
+                                <TaggedIllustration.Tag $offset={45}>"Should I work part-time?"</TaggedIllustration.Tag>
+                                <TaggedIllustration.Tag>"Holiday or a new car?"</TaggedIllustration.Tag>
+                            </TaggedIllustration>
+                        </HeroBox.Aside>
+                    </HeroBox>
                 </AppWrapper>
             </Page>
         </ThemeProvider>
