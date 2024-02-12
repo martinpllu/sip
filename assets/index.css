@@ -1,39 +1,81 @@
 body {
+    background: #f5f5f5;
+    font-family: 'Roboto', sans-serif;
     margin: 0;
-    display: flex;
-    justify-content: center;
-    flex-direction: column;
-    align-items: center;
-    height: 100vh;
-    font-family: "Roboto", sans-serif;
+    padding: 10px;
+    color: #4d4d4d;
+}
+
+#main {
+    background: #fff;
+    margin: 0 auto;
+    padding: 20px;
+    position: relative;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+    width: 550px;
 }
 
 h1 {
-    font-weight: 700;
+    font-size: 50px;
+    font-weight: 100;
+    text-align: center;
+    color: rgba(175, 47, 47, 0.8);
 }
 
-div {
+form {
+    padding: 0 16px;
+    border-bottom: 1px solid #ededed;
+}
+
+input[type="text"] {
+    padding: 16px 16px 16px 60px;
+    border: none;
+    background: rgba(0, 0, 0, 0.003);
     width: 100%;
-}
-
-@keyframes spinner {
-    to {
-        transform: rotate(360deg);
-    }
-}
-
-.spinner:before {
-    content: "";
+    font-size: 24px;
     box-sizing: border-box;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    width: 20px;
-    height: 20px;
-    margin-top: -10px;
-    margin-left: -10px;
-    border-radius: 50%;
-    border: 2px solid #ccc;
-    border-top-color: #000;
-    animation: spinner 0.6s linear infinite;
+    font-family: 'Roboto', sans-serif;
+}
+
+input[type="text"]::placeholder {
+    font-style: italic;
+    color: #e6e6e6;
+}
+
+button[type="submit"] {
+    display: none;
+}
+
+.todo-item {
+    list-style: none;
+    padding: 15px 60px;
+    border-bottom: 1px solid #ededed;
+    display: flex;
+    align-items: center;
+}
+
+.todo-complete {
+    margin-right: 20px;
+}
+
+.todo-text {
+    flex: 1;
+}
+
+.todo-completed {
+    text-decoration: line-through;
+    color: #d9d9d9;
+}
+
+.todo-delete {
+    background-color: #c44d58;
+    border: none;
+    color: white;
+    padding: 5px 9px;
+    border-radius: 3px;
+    cursor: pointer;
+}
+
+.todo-delete:hover {
+    background-color: #a04148;
 }

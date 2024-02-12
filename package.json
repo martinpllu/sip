@@ -4,7 +4,8 @@
     "private": true,
     "type": "module",
     "scripts": {
-        "dev": "sst dev",
+        "dev": "tsx watch src/local-server.ts",
+        "dev-sst": "sst dev",
         "build": "sst build",
         "build-client": "esbuild src/client/ionic.ts --bundle --minify --outfile=assets/ionic.js",
         "deploy": "sst deploy",
@@ -17,14 +18,19 @@
         "dayjs": "^1.11.10",
         "echarts": "^5.4.3",
         "hono": "^3.10.2",
-        "sqlstring": "^2.3.3"
+        "sqlstring": "^2.3.3",
+        "uuid": "^9.0.1"
     },
     "devDependencies": {
+        "@hono/node-server": "^1.7.0",
         "@tsconfig/node18": "^18.2.2",
+        "@types/node": "^20.11.17",
+        "@types/uuid": "^9.0.8",
         "aws-cdk-lib": "2.101.1",
         "constructs": "10.2.69",
         "sst": "2.31.0",
         "ts-node": "^10.9.1",
+        "tsx": "^4.7.1",
         "typescript": "^5.2.2"
     },
     "workspaces": [
