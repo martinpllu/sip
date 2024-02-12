@@ -1,4 +1,4 @@
-import { Function, StackContext } from "sst/constructs";
+import { Api, Function, StackContext } from "sst/constructs";
 
 export function Stack({ stack }: StackContext) {
     const backend = new Function(stack, "backend", {
@@ -12,7 +12,12 @@ export function Stack({ stack }: StackContext) {
         ],
         url: true,
     });
+    const api = new Api(stack, "api", {
+        routes: {
+            $default: backend,
+        },
+    });
     stack.addOutputs({
-        URL: backend.url,
+        URL: api.url,
     });
 }
