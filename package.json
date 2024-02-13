@@ -12,10 +12,14 @@
         "remove": "sst remove",
         "console": "sst console",
         "typecheck": "tsc --noEmit",
-        "postinstall": "rm -rf ./node_modules/@types/react"
+        "postinstall": "rm -rf ./node_modules/@types/react",
+        "db:generate-migrations": "drizzle-kit generate:pg",
+        "db:run-migrations": "tsx src/db/run-migrations.ts"
     },
     "dependencies": {
+        "@neondatabase/serverless": "^0.8.1",
         "dayjs": "^1.11.10",
+        "drizzle-orm": "^0.29.3",
         "echarts": "^5.4.3",
         "hono": "^3.10.2",
         "sqlstring": "^2.3.3",
@@ -28,6 +32,7 @@
         "@types/uuid": "^9.0.8",
         "aws-cdk-lib": "2.101.1",
         "constructs": "10.2.69",
+        "drizzle-kit": "^0.20.14",
         "sst": "2.31.0",
         "ts-node": "^10.9.1",
         "tsx": "^4.7.1",

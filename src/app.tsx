@@ -1,12 +1,11 @@
 import { serveStatic } from "@hono/node-server/serve-static";
-import { Hono } from "hono";
+import { Context, Hono } from "hono";
 import { deleteCookie } from "hono/cookie";
 import { useSession } from "sst/node/auth";
 import { v4 as uuidv4 } from "uuid";
+import { createTodo, deleteTodo, listTodos, toggleTodo } from "./services/todo-service";
 
-const todos = [];
-
-function renderTodos() {
+async function renderTodos() {
     const session = useSession();
     if (session.type !== "user") {
         return (
@@ -16,7 +15,8 @@ function renderTodos() {
                 </a>
             </div>
         );
-    } else
+    } else {
+        const todos = await listTodos(session.properties.userId);
         return (
             <>
                 <div class="login-message">
@@ -55,6 +55,7 @@ function renderTodos() {
                 </div>
             </>
         );
+    }
 }
 
 export const app = new Hono();
@@ -80,27 +81,35 @@ app.get("/", (c) =>
 
 app.post("/add-todo", async (c) => {
     const { text } = await c.req.parseBody();
-    const newTodo = { id: uuidv4(), text, completed: false };
-    todos.push(newTodo);
-    return c.html(renderTodos());
+    const session = useSession();
+    if (session.type === "user") {
+        await createTodo({ id: uuidv4(), text: text as string, completed: false, user_id: session.properties.userId });
+        return c.html(renderTodos());
+    } else {
+        return c.status(401);
+    }
 });
 
 app.post("/toggle-todo", async (c) => {
-    const id = c.req.query("id");
-    const todo = todos.find((todo) => todo.id === id);
-    if (todo) {
-        todo.completed = !todo.completed;
+    const session = useSession();
+    if (session.type === "user") {
+        const id = c.req.query("id");
+        await toggleTodo(session.properties.userId, id);
+        return c.html(renderTodos());
+    } else {
+        return c.status(401);
     }
-    return c.html(renderTodos());
 });
 
 app.post("/delete-todo", async (c) => {
-    const id = c.req.query("id");
-    const index = todos.findIndex((todo) => todo.id === id);
-    if (index > -1) {
-        todos.splice(index, 1);
+    const session = useSession();
+    if (session.type === "user") {
+        const id = c.req.query("id");
+        await deleteTodo(session.properties.userId, id);
+        return c.html(renderTodos());
+    } else {
+        return c.status(401);
     }
-    return c.html(renderTodos());
 });
 
 app.get("/logout", async (c) => {
