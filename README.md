@@ -13,5 +13,4 @@ https://qfg33snddo4oevevii7v6qxyje0zarno.lambda-url.eu-west-1.on.aws/
 
 ## TODO
 
-- Optionally create a cloudfront distribution for caching/custom hostname
-- Make the demo app more interactive - e.g. adding dates/values to a time series
+- support for different stages in run-query

@@ -1,7 +1,8 @@
-import { Api, Function, StackContext } from "sst/constructs";
+import { Api, Config, Function, StackContext } from "sst/constructs";
 import { Auth } from "sst/constructs";
 
 export function Stack({ stack }: StackContext) {
+    const DATABASE_URL = new Config.Secret(stack, "DATABASE_URL");
     const backend = new Function(stack, "backend", {
         runtime: "nodejs18.x",
         handler: "src/handler.handler",
@@ -11,6 +12,7 @@ export function Stack({ stack }: StackContext) {
                 to: "assets",
             },
         ],
+        bind: [DATABASE_URL],
         url: true,
     });
     const api = new Api(stack, "api", {

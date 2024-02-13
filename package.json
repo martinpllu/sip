@@ -4,8 +4,7 @@
     "private": true,
     "type": "module",
     "scripts": {
-        "dev": "tsx watch src/local-server.ts",
-        "dev-sst": "sst dev",
+        "dev": "sst dev",
         "build": "sst build",
         "build-client": "esbuild src/client/ionic.ts --bundle --minify --outfile=assets/ionic.js",
         "deploy": "sst deploy",
