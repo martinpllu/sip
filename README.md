@@ -1,16 +1,24 @@
 # sip
 
-Super simple serverless web apps
+Bolerplate for super simple serverless web apps!
 
-- https://sst.dev for dev workflow and super simple infrastructure 
-- https://hono.dev for lightweight routing and server side JSX
-- https://htmx.org for dynamic web pages without client-side Javascript
-- https://echarts.apache.org for server-side rendered charts
+- All HTML rendered on the server side with [HTMX](https://htmx.org), running on Lambda
+- Typescript everywhere
+- Zero client-side Javascript!
+- Infrastructure and Auth courtesy of [SST](https://sst.dev)
+- [Neon](https://neon.tech) used for serverless Postgres, with [Drizzle](https://orm.drizzle.team) for database access and migrations
+- [hono](https://hono.dev) for ultra lightweight routing, middleware and page rendering via JSX.
 
 ## Demo
 
-https://qfg33snddo4oevevii7v6qxyje0zarno.lambda-url.eu-west-1.on.aws/
+- [TodoMVC app](https://nwcjwgqs3m.execute-api.eu-west-1.amazonaws.com/)
+- [App code](https://github.com/martinpllu/sip/blob/master/src/app.tsx)
 
 ## TODO
 
-- support for different stages in run-query
+- Guide for hosting in your own account
+  - Ideally the client id in src/auth.ts can be moved to Config - however how to allow the Auth function to bind the Config?
+- Extend run-query to allow stage to be specified in CLI
+- Cloudfront distro, custom domain name in demo
+- Deploy static assets to S3 bucket
+- Can the faster/cheaper APIG HTTP API be used instead of REST APIs?
