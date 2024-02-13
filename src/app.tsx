@@ -1,5 +1,5 @@
 import { serveStatic } from "@hono/node-server/serve-static";
-import { Context, Hono } from "hono";
+import { Hono } from "hono";
 import { deleteCookie } from "hono/cookie";
 import { useSession } from "sst/node/auth";
 import { v4 as uuidv4 } from "uuid";
