@@ -1,4 +1,5 @@
 import { Api, Function, StackContext } from "sst/constructs";
+import { Auth } from "sst/constructs";
 
 export function Stack({ stack }: StackContext) {
     const backend = new Function(stack, "backend", {
@@ -16,6 +17,14 @@ export function Stack({ stack }: StackContext) {
         routes: {
             $default: backend,
         },
+    });
+    const auth = new Auth(stack, "auth", {
+        authenticator: {
+            handler: "src/auth.handler",
+        },
+    });
+    auth.attach(stack, {
+        api,
     });
     stack.addOutputs({
         URL: api.url,

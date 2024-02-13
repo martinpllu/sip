@@ -1,13 +1,29 @@
-import { Hono } from "hono";
-import { v4 as uuidv4 } from "uuid";
 import { serveStatic } from "@hono/node-server/serve-static";
+import { Hono } from "hono";
+import { deleteCookie } from "hono/cookie";
+import { useSession } from "sst/node/auth";
+import { v4 as uuidv4 } from "uuid";
 
 const todos = [];
 
 function renderTodos() {
+    const session = useSession();
     return (
         <div id="main">
             <h1>TodoMVC</h1>
+            {session.type !== "user" && (
+                <div class="login-message">
+                    <a href="#" onclick="window.location.href = '/auth/google/authorize'">
+                        Log in with Google to save your todos
+                    </a>
+                </div>
+            )}
+            {session.type === "user" && (
+                <div class="login-message">
+                    Welcome {session.properties.firstName}&nbsp;
+                    <a href="/logout">Log out</a>
+                </div>
+            )}
             <form hx-post="/add-todo" hx-target="#main" hx-swap="outerHTML">
                 <input type="text" name="text" placeholder="Add a new todo" required autofocus />
                 <button type="submit">Add</button>
@@ -82,4 +98,9 @@ app.post("/delete-todo", async (c) => {
         todos.splice(index, 1);
     }
     return c.html(renderTodos());
+});
+
+app.get("/logout", async (c) => {
+    deleteCookie(c, "auth-token");
+    return c.redirect("/");
 });
