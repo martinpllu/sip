@@ -8,53 +8,53 @@ const todos = [];
 
 function renderTodos() {
     const session = useSession();
-    return (
-        <div id="main">
-            <h1>TodoMVC</h1>
-            {session.type !== "user" && (
-                <div class="login-message">
-                    <a href="#" onclick="window.location.href = '/auth/google/authorize'">
-                        Log in with Google to save your todos
-                    </a>
-                </div>
-            )}
-            {session.type === "user" && (
+    if (session.type !== "user") {
+        return (
+            <div class="login-message">
+                <a href="#" onclick="window.location.href = '/auth/google/authorize'">
+                    Log in with Google
+                </a>
+            </div>
+        );
+    } else
+        return (
+            <>
                 <div class="login-message">
                     Welcome {session.properties.firstName}&nbsp;
                     <a href="/logout">Log out</a>
                 </div>
-            )}
-            <form hx-post="/add-todo" hx-target="#main" hx-swap="outerHTML">
-                <input type="text" name="text" placeholder="Add a new todo" required autofocus />
-                <button type="submit">Add</button>
-            </form>
-            <div>
-                {todos.map((todo) => (
-                    <div class="todo-item" id={todo.id}>
-                        <input
-                            type="checkbox"
-                            class="todo-complete"
-                            hx-post={`/toggle-todo?id=${todo.id}`}
-                            hx-target="#main"
-                            hx-swap="outerHTML"
-                            value={todo.id}
-                            checked={todo.completed ? true : false}
-                        />
-                        <span class={`todo-text ${todo.completed ? "todo-completed" : ""}`}>{todo.text}</span>
-                        <button
-                            class="todo-delete"
-                            hx-post={`/delete-todo?id=${todo.id}`}
-                            hx-target="#main"
-                            hx-swap="outerHTML"
-                            value={todo.id}
-                        >
-                            Delete
-                        </button>
-                    </div>
-                ))}
-            </div>
-        </div>
-    );
+
+                <form hx-post="/add-todo" hx-target="#main" hx-swap="innerHTML">
+                    <input type="text" name="text" placeholder="Add a new todo" required autofocus />
+                    <button type="submit">Add</button>
+                </form>
+                <div>
+                    {todos.map((todo) => (
+                        <div class="todo-item" id={todo.id}>
+                            <input
+                                type="checkbox"
+                                class="todo-complete"
+                                hx-post={`/toggle-todo?id=${todo.id}`}
+                                hx-target="#main"
+                                hx-swap="innerHTML"
+                                value={todo.id}
+                                checked={todo.completed ? true : false}
+                            />
+                            <span class={`todo-text ${todo.completed ? "todo-completed" : ""}`}>{todo.text}</span>
+                            <button
+                                class="todo-delete"
+                                hx-post={`/delete-todo?id=${todo.id}`}
+                                hx-target="#main"
+                                hx-swap="innerHTML"
+                                value={todo.id}
+                            >
+                                Delete
+                            </button>
+                        </div>
+                    ))}
+                </div>
+            </>
+        );
 }
 
 export const app = new Hono();
@@ -70,7 +70,10 @@ app.get("/", (c) =>
                 <link href="https://fonts.googleapis.com/css?family=Roboto:400,700&display=swap" rel="stylesheet" />
                 <link href="/assets/index.css" rel="stylesheet" />
             </head>
-            <body>{renderTodos()}</body>
+            <body>
+                <h1>TodoMVC</h1>
+                <div id="main">{renderTodos()}</div>
+            </body>
         </html>
     )
 );
