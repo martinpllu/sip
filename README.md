@@ -4,9 +4,9 @@ Bolerplate for super simple serverless web apps!
 
 - All HTML rendered on the server side with [HTMX](https://htmx.org), running on Lambda
 - Typescript everywhere
-- Zero client-side Javascript!
+- Zero client-side Javascript
 - Infrastructure and Auth courtesy of [SST](https://sst.dev)
-- [Neon](https://neon.tech) used for serverless Postgres, with [Drizzle](https://orm.drizzle.team) for database access and migrations
+- [Neon](https://neon.tech) for serverless Postgres, with [Drizzle](https://orm.drizzle.team) for database access and migrations
 - [hono](https://hono.dev) for ultra lightweight routing, middleware and page rendering via JSX.
 
 ## Demo
@@ -22,3 +22,4 @@ Bolerplate for super simple serverless web apps!
 - Cloudfront distro, custom domain name in demo
 - Deploy static assets to S3 bucket
 - Can the faster/cheaper APIG HTTP API be used instead of REST APIs?
+- Cache busting
