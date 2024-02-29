@@ -13,7 +13,7 @@ app.get("/", (c) =>
         <html>
             <head>
                 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-                <title>TodoMVC!</title>
+                <title>TodoMVC</title>
                 <script src="https://unpkg.com/htmx.org@1.9.6"></script>
                 <link href="https://fonts.googleapis.com/css?family=Roboto:400,700&display=swap" rel="stylesheet" />
                 <link href="/assets/index.css" rel="stylesheet" />
@@ -40,7 +40,7 @@ app.post("/add-todo", async (c) => {
 app.post("/toggle-todo", async (c) => {
     const session = useSession();
     if (session.type === "user") {
-        const id = c.req.query("id");
+        const id = c.req.query("id")!;
         await TodoService.toggle(session.properties.userId, id);
         return c.html(showTodos());
     } else {
@@ -51,7 +51,7 @@ app.post("/toggle-todo", async (c) => {
 app.post("/delete-todo", async (c) => {
     const session = useSession();
     if (session.type === "user") {
-        const id = c.req.query("id");
+        const id = c.req.query("id")!;
         await TodoService.delete(session.properties.userId, id);
         return c.html(showTodos());
     } else {

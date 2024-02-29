@@ -8,10 +8,10 @@ export const TodoService = {
         await db.insert(todos).values(todo);
     },
     list: async function (user: string): Promise<Todo[]> {
-        return await db
+        return (await db
             .select()
             .from(todos)
-            .where(sql`${todos.user_id} = ${user}`);
+            .where(sql`${todos.user_id} = ${user}`)) as Todo[];
     },
     toggle: async function (user: string, id: string) {
         await db.execute(sql`update ${todos} set completed = NOT completed where ${todos.user_id} = ${user} and ${todos.id} = ${id}`);

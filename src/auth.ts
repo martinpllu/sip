@@ -19,8 +19,8 @@ export const handler = AuthHandler({
                     redirect: "/",
                     type: "user",
                     properties: {
-                        userId: tokenset.claims().email,
-                        firstName: tokenset.claims().given_name,
+                        userId: tokenset.claims().email!,
+                        firstName: tokenset.claims().given_name!,
                     },
                     options: {
                         expiresIn: 1000 * 60 * 60 * 24,
