@@ -1,4 +1,5 @@
 import { AuthHandler, GoogleAdapter, Session } from "sst/node/auth";
+import { Config } from "sst/node/config";
 
 declare module "sst/node/auth" {
     export interface SessionTypes {
@@ -9,11 +10,13 @@ declare module "sst/node/auth" {
     }
 }
 
+const clientID = (Config as any)["CLIENT_ID"];
+
 export const handler = AuthHandler({
     providers: {
         google: GoogleAdapter({
             mode: "oidc",
-            clientID: "1055443311100-udjq4bp65a45fq9s9n6u9ksu8m50cj4b.apps.googleusercontent.com",
+            clientID,
             onSuccess: async (tokenset) => {
                 return Session.cookie({
                     redirect: "/",

@@ -13,7 +13,8 @@
         "typecheck": "tsc --noEmit",
         "postinstall": "rm -rf ./node_modules/@types/react",
         "db:generate-migrations": "drizzle-kit generate:pg",
-        "db:run-migrations": "tsx src/db/run-migrations.ts"
+        "db:run-migrations": "tsx src/db/run-migrations.ts",
+        "db:query": "tsx src/db/query.ts"
     },
     "dependencies": {
         "@neondatabase/serverless": "^0.8.1",

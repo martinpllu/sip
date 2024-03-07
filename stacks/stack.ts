@@ -2,7 +2,8 @@ import { Api, Config, Function, StackContext } from "sst/constructs";
 import { Auth } from "sst/constructs";
 
 export function Stack({ stack }: StackContext) {
-    const DATABASE_URL = new Config.Secret(stack, "DATABASE_URL");
+    const DATABASE_CONNECTION_STRING = new Config.Secret(stack, "DATABASE_CONNECTION_STRING");
+    const CLIENT_ID = new Config.Secret(stack, "CLIENT_ID");
     const backend = new Function(stack, "backend", {
         runtime: "nodejs18.x",
         handler: "src/handler.handler",
@@ -12,8 +13,8 @@ export function Stack({ stack }: StackContext) {
                 to: "assets",
             },
         ],
-        bind: [DATABASE_URL],
-        url: true,
+        bind: [DATABASE_CONNECTION_STRING],
+        url: false,
     });
     const api = new Api(stack, "api", {
         routes: {
@@ -23,6 +24,7 @@ export function Stack({ stack }: StackContext) {
     const auth = new Auth(stack, "auth", {
         authenticator: {
             handler: "src/auth.handler",
+            bind: [CLIENT_ID],
         },
     });
     auth.attach(stack, {
