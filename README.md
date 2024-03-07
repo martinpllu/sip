@@ -1,18 +1,23 @@
 # sip
 
-Bolerplate for super simple serverless web apps!
+ *[Fear complexity spirit](https://grugbrain.dev/)*
 
-- All HTML rendered on the server side with [HTMX](https://htmx.org), running on AWS Lambda
-- Typescript everywhere
-- Zero client-side Javascript
-- Infrastructure and Auth courtesy of [SST](https://sst.dev)
-- [Neon](https://neon.tech) for serverless Postgres, with [Drizzle](https://orm.drizzle.team) for database access and migrations
+Template for super simple serverless web apps.
+
+Features:
+
+- Typescript everywhere.
+- All HTML rendered server-side with JSX on Lambda.
+- [HTMX](https://htmx.org) for an app-like experience with zero client-side Javascript
+- Infrastructure and Auth courtesy of [SST](https://sst.dev).
+- [Neon](https://neon.tech) for serverless Postgres, with [Drizzle](https://orm.drizzle.team) for database access and migrations.
 - [hono](https://hono.dev) for ultra lightweight routing, middleware and page rendering via JSX.
 
 ## Demo
 
-- [TodoMVC app](https://nwcjwgqs3m.execute-api.eu-west-1.amazonaws.com/)
-- [App code](https://github.com/martinpllu/sip/blob/master/src/app.tsx)
+`sip` implementation of the [TodoMVC app](https://nwcjwgqs3m.execute-api.eu-west-1.amazonaws.com/)
+
+Here's the main bit of the [app code](https://github.com/martinpllu/sip/blob/master/src/app.tsx).
 
 ## Hosting in your own AWS/Neon account
 
@@ -26,11 +31,12 @@ This assumes that you have `pnpm` installed and have some basic familiarity with
 - Run `pnpm db:run-migrations`
 - Create an OAuth client ID for "Log in with Google" via https://console.developers.google.com/
 - Run ` npx sst secrets set CLIENT_ID "MY_CLIENT_ID"`
-- Run `pnpm dev` and test your app.
+- Run `pnpm dev` and test the app.
 
 ## TODO
 
-- Extend run-query to allow stage to be specified in CLI
+- Cloudflare workers
+- Extend run-query to allow the stage to be specified in CLI
 - Cloudfront distro, custom domain name in demo
 - Deploy static assets to S3 bucket
 - Can the faster/cheaper APIG HTTP API be used instead of REST APIs?
