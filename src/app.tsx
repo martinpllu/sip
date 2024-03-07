@@ -4,9 +4,23 @@ import { deleteCookie } from "hono/cookie";
 import { useSession } from "sst/node/auth";
 import { v4 as uuidv4 } from "uuid";
 import { TodoService } from "./services/todo-service";
+import md5File from "md5-file";
 
 export const app = new Hono();
 app.use("/assets/*", serveStatic({ root: "./" }));
+
+// Cache-busting hash for the CSS file
+const cssHash = md5File.sync("./assets/index.css");
+
+// Disable caching for non-static routes
+app.use("*", async (c, next) => {
+    if (!c.req.path.startsWith("/assets/")) {
+        c.header("Cache-Control", "no-cache, no-store, must-revalidate");
+        c.header("Pragma", "no-cache");
+        c.header("Expires", "0");
+    }
+    await next();
+});
 
 app.get("/", (c) =>
     c.html(
@@ -16,7 +30,7 @@ app.get("/", (c) =>
                 <title>TodoMVC</title>
                 <script src="https://unpkg.com/htmx.org@1.9.6"></script>
                 <link href="https://fonts.googleapis.com/css?family=Roboto:400,700&display=swap" rel="stylesheet" />
-                <link href="/assets/index.css" rel="stylesheet" />
+                <link href={`/assets/index.css?v=${cssHash}`} rel="stylesheet" />
             </head>
             <body>
                 <h1>TodoMVC</h1>

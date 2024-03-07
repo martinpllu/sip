@@ -34,4 +34,3 @@ This assumes that you have `pnpm` installed and have some basic familiarity with
 - Cloudfront distro, custom domain name in demo
 - Deploy static assets to S3 bucket
 - Can the faster/cheaper APIG HTTP API be used instead of REST APIs?
-- Cache busting
